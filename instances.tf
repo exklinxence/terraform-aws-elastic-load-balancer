@@ -38,23 +38,23 @@ resource "local_file" "task1-key" {
 resource "aws_instance" "web1" {
   ami = var.instance-ami
 
-  vpc_security_group_ids      = [aws_security_group.web-sg.id]
-  instance_type               = var.instance-type
-  private_ip                  = "170.31.1.21"
-  subnet_id                   = aws_subnet.web-1a.id
-  key_name                    = aws_key_pair.task1-key.key_name
-  associate_public_ip_address = true
+  vpc_security_group_ids = [aws_security_group.web-sg.id]
+  instance_type          = var.instance-type
+  private_ip             = "170.31.1.21"
+  subnet_id              = aws_subnet.web-1a.id
+  key_name               = aws_key_pair.task1-key.key_name
 
   tags = local.tags
 }
 
 resource "aws_instance" "web2" {
-  ami                    = var.instance-ami
-  vpc_security_group_ids = [aws_security_group.web-sg.id]
-  instance_type          = var.instance-type
-  private_ip             = "170.31.2.22"
-  subnet_id              = aws_subnet.web-1b.id
-  key_name               = aws_key_pair.task1-key.key_name
+  ami                         = var.instance-ami
+  vpc_security_group_ids      = [aws_security_group.web-sg.id]
+  instance_type               = var.instance-type
+  private_ip                  = "170.31.2.22"
+  subnet_id                   = aws_subnet.web-1b.id
+  key_name                    = aws_key_pair.task1-key.key_name
+  associate_public_ip_address = true
 
   tags = local.tags
 }
