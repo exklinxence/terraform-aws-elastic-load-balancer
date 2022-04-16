@@ -2,7 +2,7 @@
 
 resource "aws_vpc" "webapp-vpc" {
   cidr_block           = var.webapp-cird-block
-  enable_dns_hostnames = true
+  enable_dns_hostnames = var.enable_dns_hostnames
   tags                 = local.tags
 
 }
@@ -42,9 +42,10 @@ resource "aws_route_table_association" "webapp-rt-ass-1a" {
 }
 
 resource "aws_subnet" "web-1b" {
-  vpc_id            = aws_vpc.webapp-vpc.id
-  cidr_block        = var.cidr_blocks[1]
-  availability_zone = data.aws_availability_zones.az.names[1]
+  map_public_ip_on_launch = var.map_public_ip_on_launch
+  vpc_id                  = aws_vpc.webapp-vpc.id
+  cidr_block              = var.cidr_blocks[1]
+  availability_zone       = data.aws_availability_zones.az.names[1]
 }
 
 resource "aws_route_table_association" "web-rt-ass-1b" {
@@ -53,9 +54,10 @@ resource "aws_route_table_association" "web-rt-ass-1b" {
 }
 
 resource "aws_subnet" "app-1a" {
-  vpc_id            = aws_vpc.webapp-vpc.id
-  cidr_block        = var.cidr_blocks[2]
-  availability_zone = data.aws_availability_zones.az.names[0]
+  map_public_ip_on_launch = var.map_public_ip_on_launch
+  vpc_id                  = aws_vpc.webapp-vpc.id
+  cidr_block              = var.cidr_blocks[2]
+  availability_zone       = data.aws_availability_zones.az.names[0]
 }
 
 resource "aws_route_table_association" "app-rt-ass-1a" {
@@ -64,9 +66,10 @@ resource "aws_route_table_association" "app-rt-ass-1a" {
 }
 
 resource "aws_subnet" "app-1b" {
-  vpc_id            = aws_vpc.webapp-vpc.id
-  cidr_block        = var.cidr_blocks[3]
-  availability_zone = data.aws_availability_zones.az.names[1]
+  map_public_ip_on_launch = var.map_public_ip_on_launch
+  vpc_id                  = aws_vpc.webapp-vpc.id
+  cidr_block              = var.cidr_blocks[3]
+  availability_zone       = data.aws_availability_zones.az.names[1]
 }
 
 resource "aws_route_table_association" "app-rt-ass-1b" {

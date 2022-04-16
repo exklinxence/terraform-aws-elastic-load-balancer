@@ -8,6 +8,7 @@ variable "aws_region" {
   type        = string
   default     = "us-east-1"
   description = "US-EAST(North Virginia)"
+  sensitive   = false
 }
 
 variable "cidr_blocks" {
@@ -39,4 +40,19 @@ variable "instance-ami" {
 variable "instance-type" {
   type    = string
   default = "t2.micro"
+}
+
+variable "associate_public_ip_address" {
+  type    = bool
+  default = true
+}
+
+variable "enable_dns_hostnames" {
+  type    = bool
+  default = true
+}
+
+variable "map_public_ip_on_launch" {
+  type    = bool
+  default = true
 }
